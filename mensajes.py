@@ -37,7 +37,7 @@ import socket
 import threading
 from datetime import datetime
 
-HOST = "192.168.1.41"  # Direccion de loopback
+HOST = "192.168.#.##" # Reemplaza con tu IP local (usa 'ipconfig' en Windows o 'ip a' en Linux/Mac)
 PORT = 65123        # > 1023 (puerto escucha)
 HEADER = 10
 
