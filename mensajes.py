@@ -1,6 +1,6 @@
 """
 ===============================================================================
-Nombre del programa : comunicación_nodos.py
+Nombre del programa : mensajes.py
 Autor               : Aburto López Roberto 
 Fecha de creación   : [10/04/2025]
 Última modificación : [14/04/2025]
