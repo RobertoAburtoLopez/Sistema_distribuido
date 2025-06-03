@@ -37,10 +37,10 @@ cd proyecto
 
 ---
 
-### 2. Ejecuta primero el nodo maestro (Michelle)
+### 2. Ejecuta primero el nodo maestro (Roberto)
 
 ```bash
-python3 nodo_michelle.py
+python3 roberto.py
 ```
 
 ---
@@ -48,26 +48,26 @@ python3 nodo_michelle.py
 ### 3. Luego ejecuta los nodos sucursales (en sus respectivas máquinas)
 
 ```bash
-python3 nodo_roberto.py
-python3 nodo_jimena.py
-python3 nodo_arturo.py
+python3 michelle.py
+python3 jimena.py
+python3 arturo.py
 ```
 
 ---
 
 ## 🧪 Funcionalidades por nodo
 
-### Nodo Maestro (Michelle)
+### Nodo Maestro (Roberto)
 - Distribuye artículos entre sucursales.
 - Sincroniza clientes.
 - Coordina exclusión mutua.
 - Detecta fallos y ejecuta elecciones.
 
-### Nodos Sucursal (Arturo, Roberto, Jimena)
+### Nodos Sucursal (Arturo, Michelle, Jimena, Roberto)
 - Comprar artículos con control de concurrencia.
 - Ver, agregar y sincronizar clientes.
 - Ver inventario y guías de envío.
-- Enviar artículos al maestro (solo Arturo, por defecto).
+- Enviar artículos al maestro para distribución.
 
 ---
 
@@ -79,13 +79,13 @@ python3 nodo_arturo.py
 ---
 
 ## 🔄 Algoritmo de Elección
-Si Michelle falla, los nodos ejecutan el algoritmo de anillo y eligen un nuevo coordinador automáticamente.
+Si Roberto falla, los nodos ejecutan el algoritmo de bully y eligen un nuevo coordinador automáticamente.
 
 ---
 
 ## ✍️ Autores
-- Michelle, Jimena, Roberto, Arturo
-- Proyecto académico de Sistemas Distribuidos
+- Roberto Aburto, Jimena Hernández, Michelle Barrios, Arturo Ciriaco
+- Proyecto Final de Sistemas Distribuidos
 
 ---
 
