@@ -1,30 +1,94 @@
-===============================================================================
-Nombre del programa : mensajes.py
-Autor               : Aburto López Roberto 
-Fecha de creación   : [10/04/2025]
-Última modificación : [14/04/2025]
-Descripción         : 
-    Este programa implementa comunicación entre "n" nodos virtuales utilizando 
-    sockets TCP. Cada nodo puede enviar y recibir mensajes de forma paralela 
-    mediante programación con hilos (threading). Los mensajes incluyen la marca 
-    de tiempo del nodo emisor y se almacenan tanto en el nodo que envía como 
-    en el que recibe.
+@@ -0,0 +1,93 @@
 
-Características:
-    - Envío de mensajes escritos por el usuario a otros nodos por IP.
-    - Confirmación automática de recepción.
-    - Almacenamiento local de todos los mensajes (enviados y recibidos).
-    - Registro de tiempo del nodo emisor incluido en cada mensaje.
-    - Conexiones concurrentes gestionadas con hilos.
+# Sistema Distribuido de Inventario y Logística
 
-Requisitos:
-    - Python 3.x
-    - Red local configurada (IP local accesible entre nodos)
-    - Puertos abiertos para conexión entre nodos (por defecto: 65123)
+Este proyecto implementa un sistema distribuido de inventario y logística utilizando Python y sockets TCP. Permite el registro y sincronización de clientes, la distribución automática de artículos, compras con exclusión mutua, generación de guías de envío, y un algoritmo de elección de nodo maestro en caso de fallo.
 
-Uso:
-    Ejecutar este script en cada nodo participante.
-    El usuario podrá ingresar la IP de destino y el mensaje a enviar.
+---
 
-Notas:
-    Asegúrese de ejecutar todos los nodos antes de intentar enviar mensajes.
+## 📦 Estructura del Proyecto
+
+```
+/proyecto
+├── nodo_michelle.py        # Nodo maestro
+├── nodo_roberto.py         # Nodo sucursal
+├── nodo_jimena.py          # Nodo sucursal
+├── nodo_arturo.py          # Nodo sucursal
+├── clientes.json           # Lista distribuida de clientes
+├── inventario.json         # Inventario local de sucursal
+├── inventario_maestro.json# Inventario del nodo maestro
+├── guias.json              # Guías de envío generadas por cada compra
+├── estado.json             # Estado de bloqueo para exclusión mutua
+├── fallas.log              # Registro de fallas detectadas por el maestro
+```
+
+---
+
+## 🚀 Instrucciones de uso
+
+### 1. Clona este repositorio en cada nodo (máquina virtual)
+
+```bash
+git clone <REPO_URL>
+cd proyecto
+```
+
+> Asegúrate de editar `MI_NOMBRE` en cada archivo `.py` según el nodo que se ejecuta (Michelle, Roberto, Jimena o Arturo).
+
+---
+
+### 2. Ejecuta primero el nodo maestro (Michelle)
+
+```bash
+python3 nodo_michelle.py
+```
+
+---
+
+### 3. Luego ejecuta los nodos sucursales (en sus respectivas máquinas)
+
+```bash
+python3 nodo_roberto.py
+python3 nodo_jimena.py
+python3 nodo_arturo.py
+```
+
+---
+
+## 🧪 Funcionalidades por nodo
+
+### Nodo Maestro (Michelle)
+- Distribuye artículos entre sucursales.
+- Sincroniza clientes.
+- Coordina exclusión mutua.
+- Detecta fallos y ejecuta elecciones.
+
+### Nodos Sucursal (Arturo, Roberto, Jimena)
+- Comprar artículos con control de concurrencia.
+- Ver, agregar y sincronizar clientes.
+- Ver inventario y guías de envío.
+- Enviar artículos al maestro (solo Arturo, por defecto).
+
+---
+
+## 📝 Requisitos
+- Python 3.x
+- Red local configurada (mismo rango de IP)
+- Puerto TCP 65123 habilitado entre nodos
+
+---
+
+## 🔄 Algoritmo de Elección
+Si Michelle falla, los nodos ejecutan el algoritmo de anillo y eligen un nuevo coordinador automáticamente.
+
+---
+
+## ✍️ Autores
+- Michelle, Jimena, Roberto, Arturo
+- Proyecto académico de Sistemas Distribuidos
+
+---
+
+## 📁 Inicialización de archivos
+Incluye archivos `.json` vacíos iniciales como `clientes.json`, `guias.json`, `inventario.json`, etc.
+Add comment
