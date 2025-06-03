@@ -10,10 +10,10 @@ Este proyecto implementa un sistema distribuido de inventario y logística utili
 
 ```
 /proyecto
-├── nodo_michelle.py        # Nodo maestro
-├── nodo_roberto.py         # Nodo sucursal
-├── nodo_jimena.py          # Nodo sucursal
-├── nodo_arturo.py          # Nodo sucursal
+├── michelle.py        # Nodo maestro
+├── roberto.py         # Nodo sucursal
+├── jimena.py          # Nodo sucursal
+├── arturo.py          # Nodo sucursal
 ├── clientes.json           # Lista distribuida de clientes
 ├── inventario.json         # Inventario local de sucursal
 ├── inventario_maestro.json# Inventario del nodo maestro
